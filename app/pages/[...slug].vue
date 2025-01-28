@@ -16,7 +16,7 @@ const route = useRoute()
 const slug = computed(() => withLeadingSlash(String(route.params.slug).replace(/,/g, '/')))
 
 const { data: page } = await useAsyncData('page-' + slug.value, () => {
-  return queryCollection('content').path(slug.value).first()
+  return queryCollection('content_en').path(slug.value).first()
 })
 
 if (!page.value) {
