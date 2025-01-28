@@ -1,8 +1,12 @@
 <template>
-  <ContentRenderer
-    v-if="data"
-    :value="data.page"
-  />
+  <div>
+    <ContentRenderer
+      v-if="data"
+      :value="data.page"
+    />
+
+    <pre>surround: {{ data?.surround }}</pre>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -12,10 +16,6 @@ const route = useRoute()
 
 const { data } = await useAsyncData(route.path, () => Promise.all([
   queryCollection('docs').path(route.path).first(),
-  queryCollectionItemSurroundings('docs', route.path, {
-    fields: ['title', 'description']
-  })
-]), {
-  transform: ([page, surround]) => ({ page, surround })
-})
+  queryCollectionItemSurroundings('docs', route.path, { fields: ['title', 'description'] })
+]), { transform: ([page, surround]) => ({ page, surround }) })
 </script>

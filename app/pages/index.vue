@@ -9,7 +9,10 @@
 <script setup lang="ts">
 import { createError, queryCollection, useAsyncData, useSeoMeta } from '#imports'
 
-const { data: page } = await useAsyncData('index', () => queryCollection('landing').path('/').first())
+const { data: page } = await useAsyncData('index', () => {
+  return queryCollection('landing').path('/').first()
+})
+
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
