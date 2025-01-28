@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <ContentRenderer
-      v-if="data"
-      :value="data.page"
-    />
-
-    <pre>surround: {{ data?.surround }}</pre>
-  </div>
+  <ContentRenderer
+    v-if="page"
+    :value="page"
+  />
 </template>
 
 <script setup lang="ts">
-import { queryCollection, queryCollectionItemSurroundings, useAsyncData, useRoute } from '#imports'
+import { createError, queryCollection, useAsyncData, useRoute } from '#imports'
 
 const route = useRoute()
 
-const { data } = await useAsyncData(route.path, () => Promise.all([
-  queryCollection('docs').path(route.path).first(),
-  queryCollectionItemSurroundings('docs', route.path, { fields: ['title', 'description'] })
-]), { transform: ([page, surround]) => ({ page, surround }) })
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('content_en').path(route.path).first()
+})
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
 </script>

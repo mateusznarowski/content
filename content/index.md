@@ -1,3 +1,0 @@
-# Start page
-
-Magna ex elit ea aliquip Lorem cupidatat consequat consequat cillum occaecat nisi irure nisi. Nulla sunt do in consequat pariatur non culpa officia aliqua pariatur laboris nostrud voluptate. Elit voluptate sint minim nostrud duis aliquip sunt enim. Adipisicing pariatur aliquip aliqua aute non excepteur reprehenderit ad in excepteur est. Amet commodo ex commodo adipisicing duis sit ex ea duis irure reprehenderit magna nisi.
