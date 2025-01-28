@@ -1,25 +1,21 @@
 <template>
   <ContentRenderer
-    v-if="page"
-    :value="page"
+    v-if="data"
+    :value="data.page"
   />
 </template>
 
 <script setup lang="ts">
-import { withLeadingSlash } from 'ufo'
-import { computed } from 'vue'
-
-import { createError, queryCollection, useAsyncData, useRoute } from '#imports'
+import { queryCollection, queryCollectionItemSurroundings, useAsyncData, useRoute } from '#imports'
 
 const route = useRoute()
 
-const slug = computed(() => withLeadingSlash(String(route.params.slug).replace(/,/g, '/')))
-
-const { data: page } = await useAsyncData('page-' + slug.value, () => {
-  return queryCollection('content_en').path(slug.value).first()
+const { data } = await useAsyncData(route.path, () => Promise.all([
+  queryCollection('docs').path(route.path).first(),
+  queryCollectionItemSurroundings('docs', route.path, {
+    fields: ['title', 'description']
+  })
+]), {
+  transform: ([page, surround]) => ({ page, surround })
 })
-
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-}
 </script>
