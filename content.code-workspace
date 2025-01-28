@@ -1,0 +1,24 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "never",
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "never"
+    },
+    "prettier.enable": false,
+    "eslint.useFlatConfig": true
+  },
+  "extensions": {
+    "recommendations": [
+      "editorconfig.editorconfig",
+      "dbaeumer.vscode-eslint",
+      "cpylua.language-postcss",
+      "usernamehw.errorlens",
+      "vue.volar",
+      "nuxt.mdc"
+    ]
+  }
+}
