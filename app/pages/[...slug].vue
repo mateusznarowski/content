@@ -17,7 +17,7 @@ const getCurrentLocale = () => {
   const prefix = segments[0]
 
   if (!prefix) return 'en'
-  if (['polish'].includes(prefix)) {
+  if (['pl'].includes(prefix)) {
     return 'pl'
   }
 
