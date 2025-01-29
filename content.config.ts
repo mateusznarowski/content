@@ -5,14 +5,14 @@ export default defineContentConfig({
     content_en: defineCollection({
       type: 'page',
       source: {
-        include: 'en/**',
+        include: 'english/**',
         prefix: '/en'
       }
     }),
     content_pl: defineCollection({
       type: 'page',
       source: {
-        include: 'pl/**',
+        include: 'polish/**',
         prefix: '/pl'
       }
     })
